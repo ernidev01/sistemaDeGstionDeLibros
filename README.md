@@ -26,7 +26,7 @@ Aplicando buenas prácticas de desarrollo backend con arquitectura en capas.
 - Spring Boot
 - Spring Data JPA
 - Maven
-- Base de datos relacional (MySQL o H2)
+- Base de datos relacional (MySQL)
 
 ---
 

@@ -1,6 +1,8 @@
 package com.example.demo.controllers;
 
+import com.example.demo.dao.LibroDao;
 import com.example.demo.models.Libro;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,6 +12,10 @@ import java.util.List;
 
 @RestController
 public class LibroController {
+
+    @Autowired
+    private LibroDao libroDao;
+
     @RequestMapping(value = "libro/{id}")
     public Libro getLibro(@PathVariable int id){
         Libro libro = new Libro();
@@ -17,11 +23,17 @@ public class LibroController {
         libro.setAutor("Erick Nicolas ");
         libro.setEditorial("Norma");
         libro.setPrecio(10f);
-        libro.setAnio(2025);
+        //libro.setAnio(2025);
         return libro;
     }
-@RequestMapping(value = "libros")
+
+    @RequestMapping(value = "libros")
     public List<Libro> getLibros(){
+        return libroDao.getLibros();
+    }
+
+    @RequestMapping(value = "libro")
+    public List<Libro> getLibro(){
 
         List<Libro> libros= new ArrayList<>();
 
@@ -31,7 +43,7 @@ public class LibroController {
         libro.setAutor("Erick Nicolas ");
         libro.setEditorial("Norma");
         libro.setPrecio(10f);
-        libro.setAnio(2025);
+        //libro.setAnio(2025);
 
         Libro libro2 = new Libro();
         libro2.setId(32);
@@ -39,7 +51,7 @@ public class LibroController {
         libro2.setAutor("Erick Nicolas ");
         libro2.setEditorial("Norma");
         libro2.setPrecio(10f);
-        libro2.setAnio(2025);
+        //libro2.setAnio(2025);
 
         Libro libro3 = new Libro();
         libro3.setId(12);
@@ -47,7 +59,7 @@ public class LibroController {
         libro3.setAutor("Erick Nicolas ");
         libro3.setEditorial("Norma");
         libro3.setPrecio(10f);
-        libro3.setAnio(2025);
+        //libro3.setAnio(2025);
 
         libros.add(libro);
         libros.add(libro2);

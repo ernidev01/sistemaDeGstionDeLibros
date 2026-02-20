@@ -3,6 +3,7 @@ package com.example.demo.controllers;
 import com.example.demo.dao.LibroDao;
 import com.example.demo.models.Libro;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +17,7 @@ public class LibroController {
     @Autowired
     private LibroDao libroDao;
 
-    @RequestMapping(value = "libro/{id}")
+    @RequestMapping(value = "api/libros/{id}")
     public Libro getLibro(@PathVariable int id){
         Libro libro = new Libro();
         libro.setTitulo("Hola mundo");
@@ -27,12 +28,12 @@ public class LibroController {
         return libro;
     }
 
-    @RequestMapping(value = "libros")
+    @RequestMapping(value = "api/libros")
     public List<Libro> getLibros(){
         return libroDao.getLibros();
     }
 
-    @RequestMapping(value = "libro")
+    @RequestMapping(value = "api/libro")
     public List<Libro> getLibro(){
 
         List<Libro> libros= new ArrayList<>();
@@ -67,8 +68,9 @@ public class LibroController {
 
         return libros;
     }
-    public String eliminarLibro(){
-        return "prueba";
+    @DeleteMapping(value = "api/libros/{id}")
+    public void eliminarLibro(@PathVariable long id){
+        libroDao.eliminarLivro(id);
     }
     public String editarLibro(){
         return "prueba";

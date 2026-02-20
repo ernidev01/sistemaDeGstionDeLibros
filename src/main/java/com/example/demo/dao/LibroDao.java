@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface LibroDao {
     List<Libro> getLibros();
+
+    void eliminarLivro(long id);
 }

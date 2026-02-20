@@ -21,4 +21,11 @@ public class LibroDaoImp implements LibroDao{
         String query = "FROM Libro";
         return entityManager.createQuery(query).getResultList();
     }
+
+    @Override
+    public void eliminarLivro(long id) {
+        Libro libro = entityManager.find(Libro.class, id);
+        entityManager.remove(libro);
+    }
+
 }
